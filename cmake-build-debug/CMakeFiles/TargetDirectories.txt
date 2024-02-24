@@ -1,0 +1,6 @@
+/Users/vadimleonov/CLionProjects/project2/cmake-build-debug/CMakeFiles/project2.dir
+/Users/vadimleonov/CLionProjects/project2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/vadimleonov/CLionProjects/project2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/vadimleonov/CLionProjects/project2/cmake-build-debug/my-stack/CMakeFiles/mylib.dir
+/Users/vadimleonov/CLionProjects/project2/cmake-build-debug/my-stack/CMakeFiles/edit_cache.dir
+/Users/vadimleonov/CLionProjects/project2/cmake-build-debug/my-stack/CMakeFiles/rebuild_cache.dir
