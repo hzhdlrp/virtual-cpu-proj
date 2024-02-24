@@ -54,8 +54,11 @@ public:
     Stack& operator=(Stack &&);
     ~Stack();
 
+    void push(T);
+    void pop();
+    T top();
 private:
-    StackNode<T> *top = nullptr;
+    StackNode<T> *_top = nullptr;
 };
 
 template<class T>
@@ -63,22 +66,44 @@ Stack<T>::Stack() = default;
 
 template<class T>
 Stack<T>::Stack(Stack &&other) {
-    top = other.top;
-    other.top = nullptr;
+    _top = other._top;
+    other._top = nullptr;
 }
 
 template<class T>
 Stack<T>& Stack<T>::operator=(Stack<T> && other) {
-    top = other.top;
-    other.top = nullptr;
+    _top = other._top;
+    other._top = nullptr;
     return *this;
 }
 
 template<class T>
 Stack<T>::~Stack() {
-    while (top) {
-        auto next = top->next;
-        delete(top);
-        top = next;
+    while (_top) {
+        auto next = _top->next;
+        delete(_top);
+        _top = next;
     }
+}
+
+template<class T>
+void Stack<T>::push(T data) {
+    auto *ptr = _top;
+    _top = new StackNode<T>;
+    _top->data = data;
+    _top->next = ptr;
+}
+
+template<class T>
+void Stack<T>::pop() {
+    StackNode<T> *ptr = _top;
+    if (_top) {
+        _top = _top->next;
+    }
+    delete(ptr);
+}
+
+template<class T>
+T Stack<T>::top() {
+    return _top->data;
 }
