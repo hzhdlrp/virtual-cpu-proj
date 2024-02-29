@@ -578,3 +578,40 @@ events:
       
       
 ...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CheckCSourceCompiles.cmake:76 (cmake_check_source_compiles)"
+      - "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/FindThreads.cmake:97 (CHECK_C_SOURCE_COMPILES)"
+      - "/Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "my-stack/googletest/googletest/cmake/internal_utils.cmake:66 (find_package)"
+      - "my-stack/googletest/googletest/CMakeLists.txt:83 (config_compiler_and_linker)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "/Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-fCSetK"
+      binary: "/Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-fCSetK"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-g"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_OSX_ARCHITECTURES: ""
+      CMAKE_OSX_DEPLOYMENT_TARGET: ""
+      CMAKE_OSX_SYSROOT: "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk"
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-fCSetK
+        
+        Run Build Command(s):/Applications/CLion.app/Contents/bin/ninja/mac/ninja -v cmTC_27405 && [1/2] /opt/homebrew/bin/gcc-12 -DCMAKE_HAVE_LIBC_PTHREAD  -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -o CMakeFiles/cmTC_27405.dir/src.c.o -c /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/CMakeFiles/CMakeScratch/TryCompile-fCSetK/src.c
+        [2/2] : && /opt/homebrew/bin/gcc-12 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/cmTC_27405.dir/src.c.o -o cmTC_27405   && :
+        -macosx_version_min has been renamed to -macos_version_min
+        ld: warning: ignoring duplicate libraries: '-lgcc'
+        
+      exitCode: 0
+...

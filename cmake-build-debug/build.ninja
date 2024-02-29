@@ -47,7 +47,7 @@ cmake_ninja_workdir = /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake
 #############################################
 # Order-only phony target for project2
 
-build cmake_object_order_depends_target_project2: phony || CMakeFiles/project2.dir
+build cmake_object_order_depends_target_project2: phony || my-stack/mylib
 
 build CMakeFiles/project2.dir/main.cpp.o: CXX_COMPILER__project2_unscanned_Debug /Users/vadimleonov/CLionProjects/virtual_cpu_project/main.cpp || cmake_object_order_depends_target_project2
   DEP_FILE = CMakeFiles/project2.dir/main.cpp.o.d
@@ -64,7 +64,7 @@ build CMakeFiles/project2.dir/main.cpp.o: CXX_COMPILER__project2_unscanned_Debug
 #############################################
 # Link the executable project2
 
-build project2: CXX_EXECUTABLE_LINKER__project2_Debug CMakeFiles/project2.dir/main.cpp.o
+build project2: CXX_EXECUTABLE_LINKER__project2_Debug CMakeFiles/project2.dir/main.cpp.o || my-stack/mylib
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk
   OBJECT_DIR = CMakeFiles/project2.dir
   POST_BUILD = :
@@ -95,8 +95,521 @@ build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
 
 build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
+
+#############################################
+# Utility command for list_install_components
+
+build list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build CMakeFiles/install.util: CUSTOM_COMMAND all
+  COMMAND = cd /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build install: phony CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build CMakeFiles/install/local.util: CUSTOM_COMMAND all
+  COMMAND = cd /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build install/local: phony CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build CMakeFiles/install/strip.util: CUSTOM_COMMAND all
+  COMMAND = cd /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build install/strip: phony CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /Users/vadimleonov/CLionProjects/virtual_cpu_project/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for mylib
+
+build my-stack/mylib: phony
+
+# =============================================================================
+# Object build statements for EXECUTABLE target tests
+
+
+#############################################
+# Order-only phony target for tests
+
+build cmake_object_order_depends_target_tests: phony || cmake_object_order_depends_target_gtest cmake_object_order_depends_target_gtest_main
+
+build my-stack/CMakeFiles/tests.dir/tests.cpp.o: CXX_COMPILER__tests_unscanned_Debug /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/tests.cpp || cmake_object_order_depends_target_tests
+  DEP_FILE = my-stack/CMakeFiles/tests.dir/tests.cpp.o.d
+  FLAGS = -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fdiagnostics-color=always
+  INCLUDES = -isystem /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/include -isystem /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest
+  OBJECT_DIR = my-stack/CMakeFiles/tests.dir
+  OBJECT_FILE_DIR = my-stack/CMakeFiles/tests.dir
+
+
+# =============================================================================
+# Link build statements for EXECUTABLE target tests
+
+
+#############################################
+# Link the executable my-stack/tests
+
+build my-stack/tests: CXX_EXECUTABLE_LINKER__tests_Debug my-stack/CMakeFiles/tests.dir/tests.cpp.o | lib/libgtest.a lib/libgtest_main.a lib/libgtest.a || lib/libgtest.a lib/libgtest_main.a
+  FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk
+  LINK_LIBRARIES = lib/libgtest.a  lib/libgtest_main.a  -lmy-stack  lib/libgtest.a
+  OBJECT_DIR = my-stack/CMakeFiles/tests.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = my-stack/tests
+  TARGET_PDB = tests.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build my-stack/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/my-stack && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build my-stack/edit_cache: phony my-stack/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build my-stack/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/my-stack && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/vadimleonov/CLionProjects/virtual_cpu_project -B/Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build my-stack/rebuild_cache: phony my-stack/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build my-stack/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build my-stack/CMakeFiles/install.util: CUSTOM_COMMAND my-stack/all
+  COMMAND = cd /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/my-stack && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build my-stack/install: phony my-stack/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build my-stack/CMakeFiles/install/local.util: CUSTOM_COMMAND my-stack/all
+  COMMAND = cd /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/my-stack && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build my-stack/install/local: phony my-stack/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build my-stack/CMakeFiles/install/strip.util: CUSTOM_COMMAND my-stack/all
+  COMMAND = cd /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/my-stack && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build my-stack/install/strip: phony my-stack/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for edit_cache
+
+build my-stack/googletest/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/my-stack/googletest && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build my-stack/googletest/edit_cache: phony my-stack/googletest/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build my-stack/googletest/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/my-stack/googletest && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/vadimleonov/CLionProjects/virtual_cpu_project -B/Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build my-stack/googletest/rebuild_cache: phony my-stack/googletest/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build my-stack/googletest/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build my-stack/googletest/CMakeFiles/install.util: CUSTOM_COMMAND my-stack/googletest/all
+  COMMAND = cd /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/my-stack/googletest && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build my-stack/googletest/install: phony my-stack/googletest/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build my-stack/googletest/CMakeFiles/install/local.util: CUSTOM_COMMAND my-stack/googletest/all
+  COMMAND = cd /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/my-stack/googletest && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build my-stack/googletest/install/local: phony my-stack/googletest/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build my-stack/googletest/CMakeFiles/install/strip.util: CUSTOM_COMMAND my-stack/googletest/all
+  COMMAND = cd /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/my-stack/googletest && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build my-stack/googletest/install/strip: phony my-stack/googletest/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target gmock
+
+
+#############################################
+# Order-only phony target for gmock
+
+build cmake_object_order_depends_target_gmock: phony || cmake_object_order_depends_target_gtest
+
+build my-stack/googletest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o: CXX_COMPILER__gmock_unscanned_Debug /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googlemock/src/gmock-all.cc || cmake_object_order_depends_target_gmock
+  DEP_FILE = my-stack/googletest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o.d
+  FLAGS = -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fdiagnostics-color=always -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
+  INCLUDES = -I/Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googlemock/include -I/Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googlemock -isystem /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/include -isystem /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest
+  OBJECT_DIR = my-stack/googletest/googlemock/CMakeFiles/gmock.dir
+  OBJECT_FILE_DIR = my-stack/googletest/googlemock/CMakeFiles/gmock.dir/src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target gmock
+
+
+#############################################
+# Link the static library lib/libgmock.a
+
+build lib/libgmock.a: CXX_STATIC_LIBRARY_LINKER__gmock_Debug my-stack/googletest/googlemock/CMakeFiles/gmock.dir/src/gmock-all.cc.o || lib/libgtest.a
+  ARCH_FLAGS = -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = my-stack/googletest/googlemock/CMakeFiles/gmock.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = lib/libgmock.a
+  TARGET_PDB = gmock.a.dbg
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target gmock_main
+
+
+#############################################
+# Order-only phony target for gmock_main
+
+build cmake_object_order_depends_target_gmock_main: phony || cmake_object_order_depends_target_gmock cmake_object_order_depends_target_gtest
+
+build my-stack/googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o: CXX_COMPILER__gmock_main_unscanned_Debug /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googlemock/src/gmock_main.cc || cmake_object_order_depends_target_gmock_main
+  DEP_FILE = my-stack/googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o.d
+  FLAGS = -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fdiagnostics-color=always -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
+  INCLUDES = -isystem /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googlemock/include -isystem /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googlemock -isystem /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/include -isystem /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest
+  OBJECT_DIR = my-stack/googletest/googlemock/CMakeFiles/gmock_main.dir
+  OBJECT_FILE_DIR = my-stack/googletest/googlemock/CMakeFiles/gmock_main.dir/src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target gmock_main
+
+
+#############################################
+# Link the static library lib/libgmock_main.a
+
+build lib/libgmock_main.a: CXX_STATIC_LIBRARY_LINKER__gmock_main_Debug my-stack/googletest/googlemock/CMakeFiles/gmock_main.dir/src/gmock_main.cc.o || lib/libgmock.a lib/libgtest.a
+  ARCH_FLAGS = -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = my-stack/googletest/googlemock/CMakeFiles/gmock_main.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = lib/libgmock_main.a
+  TARGET_PDB = gmock_main.a.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build my-stack/googletest/googlemock/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/my-stack/googletest/googlemock && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build my-stack/googletest/googlemock/edit_cache: phony my-stack/googletest/googlemock/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build my-stack/googletest/googlemock/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/my-stack/googletest/googlemock && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/vadimleonov/CLionProjects/virtual_cpu_project -B/Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build my-stack/googletest/googlemock/rebuild_cache: phony my-stack/googletest/googlemock/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build my-stack/googletest/googlemock/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build my-stack/googletest/googlemock/CMakeFiles/install.util: CUSTOM_COMMAND my-stack/googletest/googlemock/all
+  COMMAND = cd /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/my-stack/googletest/googlemock && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build my-stack/googletest/googlemock/install: phony my-stack/googletest/googlemock/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build my-stack/googletest/googlemock/CMakeFiles/install/local.util: CUSTOM_COMMAND my-stack/googletest/googlemock/all
+  COMMAND = cd /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/my-stack/googletest/googlemock && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build my-stack/googletest/googlemock/install/local: phony my-stack/googletest/googlemock/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build my-stack/googletest/googlemock/CMakeFiles/install/strip.util: CUSTOM_COMMAND my-stack/googletest/googlemock/all
+  COMMAND = cd /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/my-stack/googletest/googlemock && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build my-stack/googletest/googlemock/install/strip: phony my-stack/googletest/googlemock/CMakeFiles/install/strip.util
+
+# =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googlemock/CMakeLists.txt
+# =============================================================================
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target gtest
+
+
+#############################################
+# Order-only phony target for gtest
+
+build cmake_object_order_depends_target_gtest: phony || my-stack/googletest/googletest/CMakeFiles/gtest.dir
+
+build my-stack/googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o: CXX_COMPILER__gtest_unscanned_Debug /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/src/gtest-all.cc || cmake_object_order_depends_target_gtest
+  DEP_FILE = my-stack/googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o.d
+  FLAGS = -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fdiagnostics-color=always -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
+  INCLUDES = -I/Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/include -I/Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest
+  OBJECT_DIR = my-stack/googletest/googletest/CMakeFiles/gtest.dir
+  OBJECT_FILE_DIR = my-stack/googletest/googletest/CMakeFiles/gtest.dir/src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target gtest
+
+
+#############################################
+# Link the static library lib/libgtest.a
+
+build lib/libgtest.a: CXX_STATIC_LIBRARY_LINKER__gtest_Debug my-stack/googletest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
+  ARCH_FLAGS = -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = my-stack/googletest/googletest/CMakeFiles/gtest.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = lib/libgtest.a
+  TARGET_PDB = gtest.a.dbg
+
+# =============================================================================
+# Object build statements for STATIC_LIBRARY target gtest_main
+
+
+#############################################
+# Order-only phony target for gtest_main
+
+build cmake_object_order_depends_target_gtest_main: phony || cmake_object_order_depends_target_gtest
+
+build my-stack/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o: CXX_COMPILER__gtest_main_unscanned_Debug /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/src/gtest_main.cc || cmake_object_order_depends_target_gtest_main
+  DEP_FILE = my-stack/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o.d
+  FLAGS = -g -std=c++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fdiagnostics-color=always -Wall -Wshadow -Wundef -Wno-error=dangling-else -DGTEST_HAS_PTHREAD=1 -fexceptions -Wextra -Wno-unused-parameter -Wno-missing-field-initializers
+  INCLUDES = -isystem /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/include -isystem /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest
+  OBJECT_DIR = my-stack/googletest/googletest/CMakeFiles/gtest_main.dir
+  OBJECT_FILE_DIR = my-stack/googletest/googletest/CMakeFiles/gtest_main.dir/src
+
+
+# =============================================================================
+# Link build statements for STATIC_LIBRARY target gtest_main
+
+
+#############################################
+# Link the static library lib/libgtest_main.a
+
+build lib/libgtest_main.a: CXX_STATIC_LIBRARY_LINKER__gtest_main_Debug my-stack/googletest/googletest/CMakeFiles/gtest_main.dir/src/gtest_main.cc.o || lib/libgtest.a
+  ARCH_FLAGS = -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = my-stack/googletest/googletest/CMakeFiles/gtest_main.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  TARGET_FILE = lib/libgtest_main.a
+  TARGET_PDB = gtest_main.a.dbg
+
+
+#############################################
+# Utility command for edit_cache
+
+build my-stack/googletest/googletest/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/my-stack/googletest/googletest && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build my-stack/googletest/googletest/edit_cache: phony my-stack/googletest/googletest/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build my-stack/googletest/googletest/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/my-stack/googletest/googletest && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/vadimleonov/CLionProjects/virtual_cpu_project -B/Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build my-stack/googletest/googletest/rebuild_cache: phony my-stack/googletest/googletest/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build my-stack/googletest/googletest/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build my-stack/googletest/googletest/CMakeFiles/install.util: CUSTOM_COMMAND my-stack/googletest/googletest/all
+  COMMAND = cd /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/my-stack/googletest/googletest && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build my-stack/googletest/googletest/install: phony my-stack/googletest/googletest/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build my-stack/googletest/googletest/CMakeFiles/install/local.util: CUSTOM_COMMAND my-stack/googletest/googletest/all
+  COMMAND = cd /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/my-stack/googletest/googletest && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build my-stack/googletest/googletest/install/local: phony my-stack/googletest/googletest/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build my-stack/googletest/googletest/CMakeFiles/install/strip.util: CUSTOM_COMMAND my-stack/googletest/googletest/all
+  COMMAND = cd /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/my-stack/googletest/googletest && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build my-stack/googletest/googletest/install/strip: phony my-stack/googletest/googletest/CMakeFiles/install/strip.util
+
 # =============================================================================
 # Target aliases.
+
+build gmock: phony lib/libgmock.a
+
+build gmock_main: phony lib/libgmock_main.a
+
+build gtest: phony lib/libgtest.a
+
+build gtest_main: phony lib/libgtest_main.a
+
+build libgmock.a: phony lib/libgmock.a
+
+build libgmock_main.a: phony lib/libgmock_main.a
+
+build libgtest.a: phony lib/libgtest.a
+
+build libgtest_main.a: phony lib/libgtest_main.a
+
+build mylib: phony my-stack/mylib
+
+build tests: phony my-stack/tests
 
 # =============================================================================
 # Folder targets.
@@ -106,7 +619,35 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug
 
-build all: phony project2
+build all: phony project2 my-stack/all
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/my-stack
+
+build my-stack/all: phony my-stack/mylib my-stack/tests my-stack/googletest/all
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/my-stack/googletest
+
+build my-stack/googletest/all: phony my-stack/googletest/googlemock/all
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/my-stack/googletest/googlemock
+
+build my-stack/googletest/googlemock/all: phony lib/libgmock.a lib/libgmock_main.a my-stack/googletest/googletest/all
+
+# =============================================================================
+
+#############################################
+# Folder: /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/my-stack/googletest/googletest
+
+build my-stack/googletest/googletest/all: phony lib/libgtest.a lib/libgtest_main.a
 
 # =============================================================================
 # Built-in targets
@@ -115,14 +656,14 @@ build all: phony project2
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/GNU-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/GNU-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-GNU-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-GNU-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/UnixPaths.cmake /Users/vadimleonov/CLionProjects/virtual_cpu_project/CMakeLists.txt CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeDependentOption.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakePackageConfigHelpers.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CheckCSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CheckIncludeFile.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CheckLibraryExists.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/GNU-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/GNU-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/FindPackageHandleStandardArgs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/FindPackageMessage.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/FindThreads.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/GNUInstallDirs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Internal/CheckSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-GNU-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-GNU-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/UnixPaths.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/WriteBasicConfigVersionFile.cmake /Users/vadimleonov/CLionProjects/virtual_cpu_project/CMakeLists.txt /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/CMakeLists.txt /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/CMakeLists.txt /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googlemock/CMakeLists.txt /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googlemock/cmake/gmock.pc.in /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googlemock/cmake/gmock_main.pc.in /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/CMakeLists.txt /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/cmake/Config.cmake.in /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/cmake/gtest.pc.in /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/cmake/gtest_main.pc.in /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/cmake/internal_utils.cmake CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/GNU-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/GNU-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-GNU-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-GNU-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/UnixPaths.cmake /Users/vadimleonov/CLionProjects/virtual_cpu_project/CMakeLists.txt CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake: phony
+build /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeDependentOption.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakePackageConfigHelpers.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CheckCSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CheckIncludeFile.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CheckLibraryExists.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/GNU-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/GNU-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/FindPackageHandleStandardArgs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/FindPackageMessage.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/FindThreads.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/GNUInstallDirs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Internal/CheckSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-GNU-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-GNU-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/UnixPaths.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/WriteBasicConfigVersionFile.cmake /Users/vadimleonov/CLionProjects/virtual_cpu_project/CMakeLists.txt /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/CMakeLists.txt /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/CMakeLists.txt /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googlemock/CMakeLists.txt /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googlemock/cmake/gmock.pc.in /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googlemock/cmake/gmock_main.pc.in /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/CMakeLists.txt /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/cmake/Config.cmake.in /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/cmake/gtest.pc.in /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/cmake/gtest_main.pc.in /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/cmake/internal_utils.cmake CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake: phony
 
 
 #############################################
