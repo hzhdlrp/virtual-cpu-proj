@@ -29,7 +29,8 @@ TEST(stack, copy_assignment) {
     Stack<int> a;
     a.push(5);
     a.push(-2);
-    Stack<int> b = a;
+    Stack<int> b;
+    b = a;
     std::stringstream ssa, ssb;
     ssa << a.top() << " ";
     ssb << b.top() << " ";
@@ -60,7 +61,8 @@ TEST(stack, move_assignment) {
     a.push(45);
     a.push(23);
     Stack<int> b = a;
-    Stack<int> c = std::move(a);
+    Stack<int> c;
+    c = std::move(a);
     std::stringstream ssc, ssb;
     ssc << c.top() << " ";
     ssb << b.top() << " ";
@@ -87,11 +89,25 @@ TEST(stack, move_constructor) {
     ASSERT_EQ(ssc.str(), ssb.str());
 }
 
+TEST(stack, copy_cons_empty) {
+    Stack<double> a;
+    Stack<double> b(a);
+    ASSERT_EQ(b.top(), NULL);
+}
+
+TEST(stack, copy_assig_empty) {
+    Stack<char> a;
+    Stack<char> b;
+    b = a;
+    ASSERT_EQ(b.top(), NULL);
+}
+
 TEST(stack_node, copy_assignment) {
     StackNode<int> a1, a2;
     a1.data = 15;
     a1.next = &a2;
-    StackNode<int> b = a1;
+    StackNode<int> b;
+    b = a1;
     ASSERT_EQ((b.data == a1.data) && (b.next == a1.next), true);
 }
 
@@ -100,7 +116,8 @@ TEST(stack_node, move_assignment) {
     a1.data = 99;
     a1.next = &a2;
     StackNode<int> b = a1;
-    StackNode<int> c = std::move(a1);
+    StackNode<int> c;
+    c = std::move(a1);
     ASSERT_EQ((b.data == c.data) && (b.next == c.next), true);
 }
 
@@ -111,7 +128,6 @@ TEST(stack_node, copy_constructor) {
     StackNode<int> b(a1);
     ASSERT_EQ((b.data == a1.data) && (b.next == a1.next), true);
 }
-
 
 TEST(stack_node, move_constructor) {
     StackNode<int> a1, a2;
