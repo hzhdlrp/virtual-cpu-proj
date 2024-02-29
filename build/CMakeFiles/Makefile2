@@ -57,55 +57,38 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /Users/vadimleonov/CLionProjects/project2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/vadimleonov/CLionProjects/project2/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/vadimleonov/CLionProjects/project2/build
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
 all: CMakeFiles/project2.dir/all
-all: my-stack/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
-preinstall: my-stack/preinstall
+preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
 clean: CMakeFiles/project2.dir/clean
-clean: my-stack/clean
 .PHONY : clean
-
-#=============================================================================
-# Directory level rules for directory my-stack
-
-# Recursive "all" directory target.
-my-stack/all: my-stack/CMakeFiles/mylib.dir/all
-.PHONY : my-stack/all
-
-# Recursive "preinstall" directory target.
-my-stack/preinstall:
-.PHONY : my-stack/preinstall
-
-# Recursive "clean" directory target.
-my-stack/clean: my-stack/CMakeFiles/mylib.dir/clean
-.PHONY : my-stack/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/project2.dir
 
 # All Build rule for target.
-CMakeFiles/project2.dir/all: my-stack/CMakeFiles/mylib.dir/all
+CMakeFiles/project2.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/project2.dir/build.make CMakeFiles/project2.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/project2.dir/build.make CMakeFiles/project2.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/vadimleonov/CLionProjects/project2/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target project2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/vadimleonov/CLionProjects/project2/build/CMakeFiles --progress-num=1,2 "Built target project2"
 .PHONY : CMakeFiles/project2.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/project2.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/vadimleonov/CLionProjects/project2/cmake-build-debug/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/vadimleonov/CLionProjects/project2/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/project2.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/vadimleonov/CLionProjects/project2/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/vadimleonov/CLionProjects/project2/build/CMakeFiles 0
 .PHONY : CMakeFiles/project2.dir/rule
 
 # Convenience name for target.
@@ -116,32 +99,6 @@ project2: CMakeFiles/project2.dir/rule
 CMakeFiles/project2.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/project2.dir/build.make CMakeFiles/project2.dir/clean
 .PHONY : CMakeFiles/project2.dir/clean
-
-#=============================================================================
-# Target rules for target my-stack/CMakeFiles/mylib.dir
-
-# All Build rule for target.
-my-stack/CMakeFiles/mylib.dir/all:
-	$(MAKE) $(MAKESILENT) -f my-stack/CMakeFiles/mylib.dir/build.make my-stack/CMakeFiles/mylib.dir/depend
-	$(MAKE) $(MAKESILENT) -f my-stack/CMakeFiles/mylib.dir/build.make my-stack/CMakeFiles/mylib.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/vadimleonov/CLionProjects/project2/cmake-build-debug/CMakeFiles --progress-num= "Built target mylib"
-.PHONY : my-stack/CMakeFiles/mylib.dir/all
-
-# Build rule for subdir invocation for target.
-my-stack/CMakeFiles/mylib.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/vadimleonov/CLionProjects/project2/cmake-build-debug/CMakeFiles 0
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 my-stack/CMakeFiles/mylib.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/vadimleonov/CLionProjects/project2/cmake-build-debug/CMakeFiles 0
-.PHONY : my-stack/CMakeFiles/mylib.dir/rule
-
-# Convenience name for target.
-mylib: my-stack/CMakeFiles/mylib.dir/rule
-.PHONY : mylib
-
-# clean rule for target.
-my-stack/CMakeFiles/mylib.dir/clean:
-	$(MAKE) $(MAKESILENT) -f my-stack/CMakeFiles/mylib.dir/build.make my-stack/CMakeFiles/mylib.dir/clean
-.PHONY : my-stack/CMakeFiles/mylib.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

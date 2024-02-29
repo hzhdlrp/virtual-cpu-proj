@@ -60,7 +60,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /Users/vadimleonov/CLionProjects/project2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/vadimleonov/CLionProjects/project2/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/vadimleonov/CLionProjects/project2/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/vadimleonov/CLionProjects/project2/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_progress_start /Users/vadimleonov/CLionProjects/project2/cmake-build-debug/CMakeFiles /Users/vadimleonov/CLionProjects/project2/cmake-build-debug/my-stack//CMakeFiles/progress.marks
-	cd /Users/vadimleonov/CLionProjects/project2/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 my-stack/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/vadimleonov/CLionProjects/project2/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/vadimleonov/CLionProjects/project2/build/CMakeFiles /Users/vadimleonov/CLionProjects/project2/build//CMakeFiles/progress.marks
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/vadimleonov/CLionProjects/project2/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/vadimleonov/CLionProjects/project2/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 my-stack/clean
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 clean
 .PHONY : clean
 
 # The main clean target
@@ -103,32 +103,55 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/vadimleonov/CLionProjects/project2/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 my-stack/preinstall
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/vadimleonov/CLionProjects/project2/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 my-stack/preinstall
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/vadimleonov/CLionProjects/project2/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-# Convenience name for target.
-my-stack/CMakeFiles/mylib.dir/rule:
-	cd /Users/vadimleonov/CLionProjects/project2/cmake-build-debug && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 my-stack/CMakeFiles/mylib.dir/rule
-.PHONY : my-stack/CMakeFiles/mylib.dir/rule
+#=============================================================================
+# Target rules for targets named project2
 
-# Convenience name for target.
-mylib: my-stack/CMakeFiles/mylib.dir/rule
-.PHONY : mylib
+# Build rule for target.
+project2: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 project2
+.PHONY : project2
 
 # fast build rule for target.
-mylib/fast:
-	cd /Users/vadimleonov/CLionProjects/project2/cmake-build-debug && $(MAKE) $(MAKESILENT) -f my-stack/CMakeFiles/mylib.dir/build.make my-stack/CMakeFiles/mylib.dir/build
-.PHONY : mylib/fast
+project2/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/project2.dir/build.make CMakeFiles/project2.dir/build
+.PHONY : project2/fast
+
+main.o: main.cpp.o
+.PHONY : main.o
+
+# target to build an object file
+main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/project2.dir/build.make CMakeFiles/project2.dir/main.cpp.o
+.PHONY : main.cpp.o
+
+main.i: main.cpp.i
+.PHONY : main.i
+
+# target to preprocess a source file
+main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/project2.dir/build.make CMakeFiles/project2.dir/main.cpp.i
+.PHONY : main.cpp.i
+
+main.s: main.cpp.s
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/project2.dir/build.make CMakeFiles/project2.dir/main.cpp.s
+.PHONY : main.cpp.s
 
 # Help Target
 help:
@@ -138,7 +161,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... mylib"
+	@echo "... project2"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 
@@ -150,6 +176,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/vadimleonov/CLionProjects/project2/cmake-build-debug && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

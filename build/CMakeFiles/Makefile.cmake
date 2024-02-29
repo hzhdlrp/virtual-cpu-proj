@@ -11,7 +11,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.28.2/CMakeCCompiler.cmake"
   "CMakeFiles/3.28.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.28.2/CMakeSystem.cmake"
-  "/Users/vadimleonov/CLionProjects/project2/my-stack/CMakeLists.txt"
   "/opt/homebrew/Cellar/cmake/3.28.2/share/cmake/Modules/CMakeCCompiler.cmake.in"
   "/opt/homebrew/Cellar/cmake/3.28.2/share/cmake/Modules/CMakeCCompilerABI.c"
   "/opt/homebrew/Cellar/cmake/3.28.2/share/cmake/Modules/CMakeCInformation.cmake"
@@ -125,11 +124,9 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/3.28.2/CMakeCCompiler.cmake"
   "CMakeFiles/3.28.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
-  "my-stack/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/project2.dir/DependInfo.cmake"
-  "my-stack/CMakeFiles/mylib.dir/DependInfo.cmake"
   )
