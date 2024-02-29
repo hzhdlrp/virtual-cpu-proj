@@ -155,7 +155,7 @@ build my-stack/mylib: phony
 #############################################
 # Order-only phony target for tests
 
-build cmake_object_order_depends_target_tests: phony || cmake_object_order_depends_target_gtest cmake_object_order_depends_target_gtest_main
+build cmake_object_order_depends_target_tests: phony || cmake_object_order_depends_target_gtest cmake_object_order_depends_target_gtest_main my-stack/mylib
 
 build my-stack/CMakeFiles/tests.dir/tests.cpp.o: CXX_COMPILER__tests_unscanned_Debug /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/tests.cpp || cmake_object_order_depends_target_tests
   DEP_FILE = my-stack/CMakeFiles/tests.dir/tests.cpp.o.d
@@ -172,9 +172,9 @@ build my-stack/CMakeFiles/tests.dir/tests.cpp.o: CXX_COMPILER__tests_unscanned_D
 #############################################
 # Link the executable my-stack/tests
 
-build my-stack/tests: CXX_EXECUTABLE_LINKER__tests_Debug my-stack/CMakeFiles/tests.dir/tests.cpp.o | lib/libgtest.a lib/libgtest_main.a lib/libgtest.a || lib/libgtest.a lib/libgtest_main.a
+build my-stack/tests: CXX_EXECUTABLE_LINKER__tests_Debug my-stack/CMakeFiles/tests.dir/tests.cpp.o | lib/libgtest.a lib/libgtest_main.a lib/libgtest.a || lib/libgtest.a lib/libgtest_main.a my-stack/mylib
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk
-  LINK_LIBRARIES = lib/libgtest.a  lib/libgtest_main.a  -lmy-stack  lib/libgtest.a
+  LINK_LIBRARIES = lib/libgtest.a  lib/libgtest_main.a  lib/libgtest.a
   OBJECT_DIR = my-stack/CMakeFiles/tests.dir
   POST_BUILD = :
   PRE_LINK = :

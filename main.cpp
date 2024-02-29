@@ -3,6 +3,6 @@
 
 
 int main() {
-    
+    Stack<int> a;
     return 0;
 }

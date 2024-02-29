@@ -9,11 +9,10 @@ struct StackNode {
     T data;
 
     StackNode();
-    StackNode(T, StackNode<T> *);
-    StackNode(const StackNode &) = delete;
-    StackNode(StackNode &&);
-    StackNode& operator=(const StackNode &) = delete;
-    StackNode& operator=(StackNode &&);
+    StackNode(const StackNode &);
+    StackNode(StackNode &&) noexcept;
+    StackNode& operator=(const StackNode &);
+    StackNode& operator=(StackNode &&) noexcept;
     ~StackNode();
 };
 
@@ -21,18 +20,20 @@ template<class T>
 StackNode<T>::StackNode() = default;
 
 template<class T>
-StackNode<T>::StackNode(T data, StackNode<T> *ptr): data(data), next(ptr) {}
-
-
-template<class T>
-StackNode<T>::StackNode(StackNode &&other) {
+StackNode<T>::StackNode(StackNode &&other) noexcept {
     data = other.data;
     next = other.next;
     other.next = nullptr;
 }
 
 template<class T>
-StackNode<T>& StackNode<T>::operator=(StackNode<T> &&other) {
+StackNode<T>::StackNode(const StackNode &other) {
+    next = other.next;
+    data = other.data;
+}
+
+template<class T>
+StackNode<T>& StackNode<T>::operator=(StackNode<T> &&other) noexcept {
     data = other.data;
     next = other.next;
     other.next = nullptr;
@@ -40,18 +41,23 @@ StackNode<T>& StackNode<T>::operator=(StackNode<T> &&other) {
 }
 
 template<class T>
-StackNode<T>::~StackNode() {
-    delete data;
+StackNode<T> &StackNode<T>::operator=(const StackNode<T> &other) {
+    next = other.next;
+    data = other.data;
+    return *this;
 }
+
+template<class T>
+StackNode<T>::~StackNode() = default;
 
 template<class T>
 class Stack {
 public:
     Stack();
-    Stack(const Stack &) = delete;
-    Stack(Stack &&);
-    Stack& operator=(const Stack &) = delete;
-    Stack& operator=(Stack &&);
+    Stack(const Stack &);
+    Stack(Stack &&) noexcept;
+    Stack& operator=(const Stack &);
+    Stack& operator=(Stack &&) noexcept;
     ~Stack();
 
     void push(T);
@@ -65,15 +71,53 @@ template<class T>
 Stack<T>::Stack() = default;
 
 template<class T>
-Stack<T>::Stack(Stack &&other) {
+Stack<T>::Stack(Stack &&other) noexcept {
     _top = other._top;
     other._top = nullptr;
 }
 
 template<class T>
-Stack<T>& Stack<T>::operator=(Stack<T> && other) {
+Stack<T>::Stack(const Stack &other) {
+    if (other._top != nullptr) {
+        _top = new StackNode<T>;
+        *_top = *(other._top);
+        auto *ptr1 = other._top;
+        auto *ptr2 = _top;
+        while (ptr1->next) {
+            ptr2->next = new StackNode<T>;
+            *(ptr2->next) = *(ptr1->next);
+            ptr1 = ptr1->next;
+            ptr2 = ptr2->next;
+        }
+    } else {
+        _top = nullptr;
+    }
+
+}
+
+template<class T>
+Stack<T>& Stack<T>::operator=(Stack<T> && other) noexcept {
     _top = other._top;
     other._top = nullptr;
+    return *this;
+}
+
+template<class T>
+Stack<T>& Stack<T>::operator=(const Stack<T> &other) {
+    if (other._top != nullptr) {
+        _top = new StackNode<T>;
+        *_top = *(other._top);
+        StackNode<T> *ptr1 = other._top;
+        StackNode<T> *ptr2 = _top;
+        while (ptr1->next) {
+            ptr2->next = new StackNode<T>;
+            *(ptr2->next) = *(ptr1->next);
+            ptr1 = ptr1->next;
+            ptr2 = ptr2->next;
+        }
+    } else {
+        _top = nullptr;
+    }
     return *this;
 }
 
@@ -105,5 +149,9 @@ void Stack<T>::pop() {
 
 template<class T>
 T Stack<T>::top() {
-    return _top->data;
+    if (_top) {
+        return _top->data;
+    } else {
+        return NULL;
+    }
 }
