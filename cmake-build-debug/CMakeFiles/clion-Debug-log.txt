@@ -1,0 +1,13 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/ninja -DCMAKE_C_COMPILER=/opt/homebrew/bin/gcc-12 -DCMAKE_CXX_COMPILER=/opt/homebrew/bin/g++-12 -G Ninja -S /Users/vadimleonov/CLionProjects/virtual_cpu_project -B /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug
+CMake Error at my-stack/CMakeLists.txt:11 (add_subdirectory):
+  add_subdirectory given source
+  "/Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest"
+  which is not an existing directory.
+
+
+CMake Error at my-stack/CMakeLists.txt:13 (target_include_directories):
+  Cannot specify include directories for target "tests" which is not built by
+  this project.
+
+
+-- Configuring incomplete, errors occurred!
