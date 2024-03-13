@@ -27,12 +27,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bbb0eba7-33a3-415c-9ca5-17bd2b28ee24" name="Changes" comment="wrote tests">
+    <list default="true" id="bbb0eba7-33a3-415c-9ca5-17bd2b28ee24" name="Changes" comment="?">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my-stack/Stack.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/my-stack/Stack.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/my-stack/tests.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/my-stack/tests.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,6 +58,9 @@
         <option name="url" value="git@github.com:hzhdlrp/virtual-cpu-proj.git" />
       </UrlAndAccount>
     </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
@@ -92,20 +93,20 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Google Test.tests">
-    <configuration name="stack.move_assignment" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="project2" TARGET_NAME="tests" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="project2" RUN_TARGET_NAME="tests" TEST_CLASS="stack" TEST_METHOD="move_assignment" TEST_MODE="SUITE_TEST">
+  <component name="RunManager" selected="Google Test.stack.empty">
+    <configuration name="stack.copy_assig_empty" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="project2" TARGET_NAME="tests" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="project2" RUN_TARGET_NAME="tests" TEST_CLASS="stack" TEST_METHOD="copy_assig_empty" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="stack.empty" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="project2" TARGET_NAME="tests" RUN_TARGET_PROJECT_NAME="project2" RUN_TARGET_NAME="tests" TEST_CLASS="stack" TEST_METHOD="empty" TEST_MODE="SUITE_TEST">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
         <option name="BeforeTestRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="stack_node.copy_assignment" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="project2" TARGET_NAME="tests" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="project2" RUN_TARGET_NAME="tests" TEST_CLASS="stack_node" TEST_METHOD="copy_assignment" TEST_MODE="SUITE_TEST">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-        <option name="BeforeTestRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="stack_node.copy_constructor" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" temporary="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="project2" TARGET_NAME="tests" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="project2" RUN_TARGET_NAME="tests" TEST_CLASS="stack_node" TEST_METHOD="copy_constructor" TEST_MODE="SUITE_TEST">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
         <option name="BeforeTestRunTask" enabled="true" />
@@ -127,11 +128,6 @@
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
         <option name="BeforeTestRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="gmock" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="project2" TARGET_NAME="gmock" CONFIG_NAME="Debug">
@@ -180,19 +176,19 @@
       <item itemvalue="CMake Application.gtest" />
       <item itemvalue="CMake Application.gtest_main" />
       <item itemvalue="Google Test.tests" />
-      <item itemvalue="Google Test.stack.move_assignment" />
+      <item itemvalue="Google Test.stack.copy_assig_empty" />
+      <item itemvalue="Google Test.stack.empty" />
       <item itemvalue="Google Test.stack_node.copy_assignment" />
-      <item itemvalue="Google Test.stack_node.copy_constructor" />
       <item itemvalue="Google Test.stack_node.move_assignment" />
       <item itemvalue="Google Test.stack_node.move_constructor" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Google Test.stack_node.move_constructor" />
-        <item itemvalue="Google Test.stack_node.copy_constructor" />
-        <item itemvalue="Google Test.stack_node.move_assignment" />
+        <item itemvalue="Google Test.stack.empty" />
         <item itemvalue="Google Test.stack_node.copy_assignment" />
-        <item itemvalue="Google Test.stack.move_assignment" />
+        <item itemvalue="Google Test.stack_node.move_assignment" />
+        <item itemvalue="Google Test.stack.copy_assig_empty" />
+        <item itemvalue="Google Test.stack_node.move_constructor" />
       </list>
     </recent_temporary>
   </component>
@@ -209,7 +205,10 @@
       <workItem from="1709200207715" duration="211000" />
       <workItem from="1709200532997" duration="5816000" />
       <workItem from="1709210259122" duration="5015000" />
-      <workItem from="1709229228132" duration="1566000" />
+      <workItem from="1709229228132" duration="5995000" />
+      <workItem from="1709308869131" duration="3402000" />
+      <workItem from="1710250001469" duration="3526000" />
+      <workItem from="1710338231490" duration="86000" />
     </task>
     <task id="LOCAL-00001" summary="commitadd">
       <option name="closed" value="true" />
@@ -291,7 +290,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709229942489</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="?">
+      <option name="closed" value="true" />
+      <created>1709230807413</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1709230807413</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,9 +314,10 @@
     <MESSAGE value="commitadd" />
     <MESSAGE value="added file for tests, wrote cmakelists" />
     <MESSAGE value="wrote tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="wrote tests" />
+    <MESSAGE value="?" />
+    <option name="LAST_COMMIT_MESSAGE" value="?" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="../../../../CLionProjects/virtual_cpu_project/cmake-build-debug-coverage" NAME="tests Coverage Results" MODIFIED="1709230788290" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="gcov/llvm" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="../../../../CLionProjects/virtual_cpu_project/cmake-build-debug-coverage" NAME="tests Coverage Results" MODIFIED="1709232794670" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="gcov/llvm" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

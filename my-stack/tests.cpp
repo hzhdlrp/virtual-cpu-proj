@@ -21,8 +21,8 @@ TEST(stack, another_type) {
 }
 
 TEST(stack, empty) {
-    Stack<size_t> a;
-    ASSERT_EQ(a.top(), NULL);
+    Stack<int> a;
+    ASSERT_THROW(a.top(), std::logic_error);
 }
 
 TEST(stack, copy_assignment) {
@@ -136,5 +136,18 @@ TEST(stack_node, move_constructor) {
     StackNode<int> b = a1;
     StackNode<int> c (std::move(a1));
     ASSERT_EQ((b.data == c.data) && (b.next == c.next), true);
+}
+
+TEST(memcheck, copy_assignment) {
+    Stack<int> a, b;
+    a.push(98);
+    a.push(97);
+    a.push(96);
+    b.push(95);
+    b.push(94);
+    b.push(93);
+    a = b;
+    // tested with command
+    // leaks -atExit -- cmake-build-debug/my-stack/tests
 }
 

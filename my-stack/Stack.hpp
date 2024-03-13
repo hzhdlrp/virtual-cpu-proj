@@ -7,48 +7,7 @@ template<class T>
 struct StackNode {
     StackNode<T> *next = nullptr;
     T data;
-
-    StackNode();
-    StackNode(const StackNode &);
-    StackNode(StackNode &&) noexcept;
-    StackNode& operator=(const StackNode &);
-    StackNode& operator=(StackNode &&) noexcept;
-    ~StackNode();
 };
-
-template<class T>
-StackNode<T>::StackNode() = default;
-
-template<class T>
-StackNode<T>::StackNode(StackNode &&other) noexcept {
-    data = other.data;
-    next = other.next;
-    other.next = nullptr;
-}
-
-template<class T>
-StackNode<T>::StackNode(const StackNode &other) {
-    next = other.next;
-    data = other.data;
-}
-
-template<class T>
-StackNode<T>& StackNode<T>::operator=(StackNode<T> &&other) noexcept {
-    data = other.data;
-    next = other.next;
-    other.next = nullptr;
-    return *this;
-}
-
-template<class T>
-StackNode<T> &StackNode<T>::operator=(const StackNode<T> &other) {
-    next = other.next;
-    data = other.data;
-    return *this;
-}
-
-template<class T>
-StackNode<T>::~StackNode() = default;
 
 template<class T>
 class Stack {
@@ -79,6 +38,13 @@ Stack<T>::Stack(Stack &&other) noexcept {
 template<class T>
 Stack<T>::Stack(const Stack &other) {
     if (other._top != nullptr) {
+
+        while (_top) {
+            auto next = _top->next;
+            delete _top;
+            _top = next;
+        }
+
         _top = new StackNode<T>;
         *_top = *(other._top);
         auto *ptr1 = other._top;
@@ -104,19 +70,29 @@ Stack<T>& Stack<T>::operator=(Stack<T> && other) noexcept {
 
 template<class T>
 Stack<T>& Stack<T>::operator=(const Stack<T> &other) {
-    if (other._top != nullptr) {
-        _top = new StackNode<T>;
-        *_top = *(other._top);
-        StackNode<T> *ptr1 = other._top;
-        StackNode<T> *ptr2 = _top;
-        while (ptr1->next) {
-            ptr2->next = new StackNode<T>;
-            *(ptr2->next) = *(ptr1->next);
-            ptr1 = ptr1->next;
-            ptr2 = ptr2->next;
+    if  (this != &other) {
+        if (other._top != nullptr) {
+
+            while (_top) {
+                auto next = _top->next;
+                delete _top;
+                _top = next;
+            }
+
+            // add test + memcheck
+            _top = new StackNode<T>;
+            *_top = *(other._top);
+            StackNode<T> *ptr1 = other._top;
+            StackNode<T> *ptr2 = _top;
+            while (ptr1->next) {
+                ptr2->next = new StackNode<T>;
+                *(ptr2->next) = *(ptr1->next);
+                ptr1 = ptr1->next;
+                ptr2 = ptr2->next;
+            }
+        } else {
+            _top = nullptr;
         }
-    } else {
-        _top = nullptr;
     }
     return *this;
 }
@@ -125,11 +101,13 @@ template<class T>
 Stack<T>::~Stack() {
     while (_top) {
         auto next = _top->next;
-        delete(_top);
+        delete _top;
         _top = next;
     }
 }
 
+// T&&
+// const T&
 template<class T>
 void Stack<T>::push(T data) {
     auto *ptr = _top;
@@ -152,6 +130,6 @@ T Stack<T>::top() {
     if (_top) {
         return _top->data;
     } else {
-        return NULL;
+        throw std::logic_error("empty stack");
     }
 }
