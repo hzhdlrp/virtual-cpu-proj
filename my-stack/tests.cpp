@@ -92,14 +92,14 @@ TEST(stack, move_constructor) {
 TEST(stack, copy_cons_empty) {
     Stack<double> a;
     Stack<double> b(a);
-    ASSERT_EQ(b.top(), NULL);
+    ASSERT_THROW(b.top(), std::logic_error);
 }
 
 TEST(stack, copy_assig_empty) {
     Stack<char> a;
     Stack<char> b;
     b = a;
-    ASSERT_EQ(b.top(), NULL);
+    ASSERT_THROW(b.top(), std::logic_error);
 }
 
 TEST(stack_node, copy_assignment) {
