@@ -18,6 +18,7 @@ struct Commands {
 };
 
 struct Begin : Commands {
+    Begin() = default;
     void doit() override {}
 };
 
