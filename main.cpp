@@ -3,21 +3,24 @@
 #include <fstream>
 #include <memory>
 #include <vector>
-#include <memory>
 #include <map>
 #include "commands.hpp"
 
 class Virtual {
 public:
-    void start(std::ifstream *input) {
-        setInputFile(input);
-        std::string cmd;
+    void start() {
+        std::string cmd = std::string("");
         do {
             (*_inputFile) >> cmd;
-            _commandsByNames[cmd]->doit();
+            if (_commandsByNames.contains(cmd))
+//                std::cout << cmd << std::endl;
+                _commandsByNames[cmd]->doit();
         } while (cmd != std::string("END"));
     }
-    Virtual() {
+
+    Virtual(std::ifstream *input) {
+        if (!input) throw std::runtime_error("null on input stream");
+        _inputFile = input;
         _commandsByNames["BEGIN"] = std::make_unique<Begin>();
         _commandsByNames["END"] = std::make_unique<End>();
         _commandsByNames["PUSH"] = std::make_unique<Push>(_inputFile, &_stack);
@@ -30,8 +33,6 @@ public:
         _commandsByNames["DIV"] = std::make_unique<Div>(&_stack, &_registers);
         _commandsByNames["OUT"] = std::make_unique<Out>(&_stack);
         _commandsByNames["IN"] = std::make_unique<In>(_inputFile, &_stack);
-
-
     }
 private:
     std::ifstream *_inputFile = nullptr;
@@ -40,15 +41,11 @@ private:
     std::vector<std::string> _commandsNamesStack;
 
     std::map<std::string, std::unique_ptr<Commands>> _commandsByNames;
-
-    void setInputFile(std::ifstream *input) {
-        _inputFile = input;
-    }
 };
 
 int main() {
     std::ifstream input("/Users/vadimleonov/Desktop/алгосы/virtual-cpu-tests/fibo");
-    Virtual myCpu;
-    myCpu.start(&input);
+    Virtual myCpu(&input);
+    myCpu.start();
     return 0;
 }

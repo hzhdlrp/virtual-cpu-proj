@@ -13,13 +13,19 @@ struct Registers {
 };
 
 struct Commands {
+    Commands() = default;
+    Commands(const Commands&) = delete;
+    Commands(Commands&&) = delete;
+    Commands& operator=(const Commands&) = delete;
+    Commands& operator=(Commands&&) = delete;
+
     virtual void doit() = 0;
     std::ifstream *_inputFile = nullptr;
 };
 
 struct Begin : Commands {
-    Begin() = default;
-    void doit() override {}
+    void doit() override {
+    }
 };
 
 struct End : Commands {
@@ -178,7 +184,7 @@ struct Out : Pop {
     }
 
     void doit() override {
-        std::cout << _stack->top();
+        std::cout << _stack->top() << std::endl;
         _stack->pop();
     }
 };
