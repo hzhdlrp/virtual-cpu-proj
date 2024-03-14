@@ -44,7 +44,8 @@ private:
 };
 
 int main() {
+    std::ifstream input("/Users/vadimleonov/Desktop/алгосы/virtual-cpu-tests/fibo");
     Virtual myCpu;
-    myCpu.start("");
+    myCpu.start(&input);
     return 0;
 }
