@@ -9,25 +9,28 @@
 class Virtual {
 public:
     void start() {
+        std::string cmd = std::string("");
         do {
-            std::string cmd = std::string("");
-            *_inputFile >> cmd;
-            std::unique_ptr<Commands> command = std::make_unique<Commands>();
-            *command = *_commandsByNames[cmd];
-            command->setReg(_inputFile);
-            command->setValue(_inputFile);
-            _commandsVector.push_back(command);
-            if (cmd == std::string("BEGIN")) _isBegun = true;
 
-            if (_isBegun) {
-                if (_commandsByNames.contains(cmd)) {
-                    _commandsByNames[cmd]->doit();
+            *_inputFile >> cmd;
+            if (_commandsByNames.contains(cmd)) {
+                _commandsByNames[cmd]->set(_inputFile);
+                _commandsVector.push_back(std::make_unique<Commands>(*_commandsByNames[cmd]));
+                //_commandsVector.push_back(std::make_unique<Begin>());
+                ((_commandsVector[_commandsVector.size() - 1]))->method();
+                if (cmd == std::string("BEGIN")) _isBegun = true;
+                if (_isBegun) {
+                    (_commandsByNames[cmd])->doit();
                 }
+            } else {
+                cmd.pop_back();
+                _labelsIndexes[cmd] = _commandsVector.size() - 1;
             }
         } while (cmd != std::string("END"));
+        _commandsVector[0]->doit();
     }
 
-    Virtual(std::ifstream *input) {
+    explicit Virtual(std::ifstream *input) {
         if (!input) throw std::runtime_error("null on input stream");
         _inputFile = input;
         _commandsByNames["BEGIN"] = std::make_unique<Begin>();
@@ -42,13 +45,15 @@ public:
         _commandsByNames["DIV"] = std::make_unique<Div>(&_stack, &_registers);
         _commandsByNames["OUT"] = std::make_unique<Out>(&_stack);
         _commandsByNames["IN"] = std::make_unique<In>( &_stack);
+        _commandsByNames["JMP"] = std::make_unique<Jmp>(&_commandsVector, &_labelsIndexes);
+        _commandsByNames["JNE"] = std::make_unique<Jne>(&_commandsVector, &_labelsIndexes, &_stack, &_registers);
     }
 private:
     std::ifstream *_inputFile = nullptr;
     Stack<size_t> _stack;
     Registers _registers;
     std::vector<std::unique_ptr<Commands>> _commandsVector;
-    std::map<std::string , int> _labelsIndexes;
+    std::map<std::string , size_t> _labelsIndexes;
 //    std::vector<int> _functionsIndexes;
 //    bool _inFunction = false;
     bool _isBegun = false;
@@ -56,9 +61,9 @@ private:
 };
 
 int main() {
-    std::string inputFile;
-    std::cin >> inputFile;
-    //  /Users/vadimleonov/Desktop/алгосы/virtual-cpu-tests/fibo
+    std::string inputFile("/Users/vadimleonov/Desktop/алгосы/virtual-cpu-tests/fibo");
+//    std::cin >> inputFile;
+//    /Users/vadimleonov/Desktop/алгосы/virtual-cpu-tests/fibo
     std::ifstream input(inputFile);
     Virtual myCpu(&input);
     myCpu.start();

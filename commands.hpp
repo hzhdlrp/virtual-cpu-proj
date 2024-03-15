@@ -15,14 +15,17 @@ struct Registers {
 };
 
 struct Commands {
-    Commands() = default;
-    virtual void setReg(std::ifstream *input) {}
-    virtual void setValue(std::ifstream *input) {}
-    virtual void doit() {};
+    virtual void set(std::ifstream *input) {}
+    virtual void doit() {}
+    virtual void method() {
+        std::cout << "." << std::endl;
+    }
 };
 
 struct Begin : Commands {
-    void doit() override {
+    void doit() override {}
+    void method() override {
+        std::cout << "!" << std::endl;
     }
 };
 
@@ -34,7 +37,7 @@ struct Push : Commands {
     size_t _value = 0;
     Stack<size_t> *_stack = nullptr;
 
-    void setValue(std::ifstream *input) override {
+    void set(std::ifstream *input) override {
         *input >> _value;
     }
 
@@ -51,12 +54,11 @@ struct Pushr : Push {
     std::string _reg = std::string("");
     Registers *_registers = nullptr;
 
-    void setReg(std::ifstream *input) override {
+    void set(std::ifstream *input) override {
         *input >> _reg;
     }
 
     Pushr(Stack<size_t> *stack, Registers *registers) : Push(stack) {
-        _stack = stack;
         _registers = registers;
     }
 
@@ -84,7 +86,7 @@ struct Popr : Pop {
     std::string _reg = std::string("");
     Registers *_registers = nullptr;
 
-    void setReg(std::ifstream *input) override {
+    void set(std::ifstream *input) override {
         *input >> _reg;
     }
 
@@ -94,10 +96,10 @@ struct Popr : Pop {
     }
 
     void doit() override {
-        if (_reg == "AX") _stack->push(_registers->AX);
-        if (_reg == "BX") _stack->push(_registers->BX);
-        if (_reg == "CX") _stack->push(_registers->CX);
-        if (_reg == "DX") _stack->push(_registers->DX);
+        if (_reg == "AX") _registers->AX = _stack->top();
+        if (_reg == "BX") _registers->BX = _stack->top();
+        if (_reg == "CX") _registers->CX = _stack->top();
+        if (_reg == "DX") _registers->DX = _stack->top();
         _stack->pop();
     }
 };
@@ -170,8 +172,11 @@ struct Div : Commands {
     }
 };
 
-struct Out : Pop {
-    explicit Out(Stack<size_t> *stack) : Pop(stack) {}
+struct Out : Commands {
+    Stack<size_t> *_stack;
+    explicit Out(Stack<size_t> *stack)  {
+        _stack = stack;
+    }
 
     void doit() override {
         std::cout << _stack->top() << std::endl;
@@ -185,6 +190,49 @@ struct In : Push {
     void doit() override {
         std::cin >> _value;
         _stack->push(_value);
+    }
+};
+
+struct Jmp : Commands {
+    std::string _label = std::string("");
+    std::vector<std::unique_ptr<Commands>> *_commandsVector = nullptr;
+    std::map<std::string , size_t> *_labelsIndexes = nullptr;
+    size_t _index = 0;
+
+    void set(std::ifstream *input) override {
+        *input >> _label;
+    }
+
+    Jmp(std::vector<std::unique_ptr<Commands>> *commandsVector, std::map<std::string , size_t> *labelsIndexes) {
+        _commandsVector = commandsVector;
+        _labelsIndexes = labelsIndexes;
+        _index = (*_labelsIndexes)[_label];
+    }
+
+    void doit() override {
+        for (size_t i = _index; i < _commandsVector->size(); ++i) {
+            (*_commandsVector)[i]->doit();
+        }
+    }
+};
+
+struct Jne : Jmp {
+    Stack<size_t> *_stack;
+    Registers *_registers;
+
+    Jne(std::vector<std::unique_ptr<Commands>> *commandsVector, std::map<std::string , size_t> *labelsIndexes, Stack<size_t> *stack, Registers *registers) : Jmp(commandsVector, labelsIndexes) {
+        _stack = stack;
+        _registers = registers;
+    }
+
+    void doit() override {
+        _registers->F1X = _stack->top();
+        _stack->pop();
+        _registers->F2X = _stack->top();
+        _stack->push(_registers->F1X);
+        if (_registers->F1X != _registers->F2X) {
+            Jmp::doit();
+        }
     }
 };
 
