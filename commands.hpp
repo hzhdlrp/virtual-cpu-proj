@@ -16,21 +16,15 @@ struct Registers {
 
 struct Commands {
     virtual void set(std::ifstream *input) {}
-    virtual void doit() {}
-    virtual void method() {
-        std::cout << "." << std::endl;
-    }
+    virtual void doit(size_t*) {}
 };
 
 struct Begin : Commands {
-    void doit() override {}
-    void method() override {
-        std::cout << "!" << std::endl;
-    }
+    void doit(size_t*) override {}
 };
 
 struct End : Commands {
-    void doit() override {}
+    void doit(size_t*) override {}
 };
 
 struct Push : Commands {
@@ -45,7 +39,7 @@ struct Push : Commands {
         _stack = stack;
     }
 
-    void doit() override {
+    void doit(size_t*) override {
         _stack->push(_value);
     }
 };
@@ -62,7 +56,7 @@ struct Pushr : Push {
         _registers = registers;
     }
 
-    void doit() override {
+    void doit(size_t*) override {
         if (_reg == "AX") _stack->push(_registers->AX);
         if (_reg == "BX") _stack->push(_registers->BX);
         if (_reg == "CX") _stack->push(_registers->CX);
@@ -77,7 +71,7 @@ struct Pop : Commands {
         _stack = stack;
     }
 
-    void doit() override {
+    void doit(size_t*) override {
         _stack->pop();
     }
 };
@@ -95,7 +89,7 @@ struct Popr : Pop {
         _registers = registers;
     }
 
-    void doit() override {
+    void doit(size_t*) override {
         if (_reg == "AX") _registers->AX = _stack->top();
         if (_reg == "BX") _registers->BX = _stack->top();
         if (_reg == "CX") _registers->CX = _stack->top();
@@ -112,8 +106,7 @@ struct Add : Commands {
         _stack = stack;
         _registers = registers;
     }
-
-    void doit() override {
+    void doit(size_t*) override {
         _registers->F1X = _stack->top();
         _stack->pop();
         _registers->F2X = _stack->top();
@@ -130,7 +123,7 @@ struct Sub : Commands {
         _registers = registers;
     }
 
-    void doit() override {
+    void doit(size_t*) override {
         _registers->F1X = _stack->top();
         _stack->pop();
         _registers->F2X = _stack->top();
@@ -147,7 +140,7 @@ struct Mul : Commands {
         _registers = registers;
     }
 
-    void doit() override {
+    void doit(size_t*) override {
         _registers->F1X = _stack->top();
         _stack->pop();
         _registers->F2X = _stack->top();
@@ -164,7 +157,7 @@ struct Div : Commands {
         _registers = registers;
     }
 
-    void doit() override {
+    void doit(size_t*) override {
         _registers->F1X = _stack->top();
         _stack->pop();
         _registers->F2X = _stack->top();
@@ -178,7 +171,7 @@ struct Out : Commands {
         _stack = stack;
     }
 
-    void doit() override {
+    void doit(size_t*) override {
         std::cout << _stack->top() << std::endl;
         _stack->pop();
     }
@@ -187,7 +180,7 @@ struct Out : Commands {
 struct In : Push {
     explicit In(Stack<size_t> *stack) : Push(stack) {}
 
-    void doit() override {
+    void doit(size_t*) override {
         std::cin >> _value;
         _stack->push(_value);
     }
@@ -209,10 +202,8 @@ struct Jmp : Commands {
         _index = (*_labelsIndexes)[_label];
     }
 
-    void doit() override {
-        for (size_t i = _index; i < _commandsVector->size(); ++i) {
-            (*_commandsVector)[i]->doit();
-        }
+    void doit(size_t *i) override {
+        *i = _index;
     }
 };
 
@@ -225,13 +216,13 @@ struct Jne : Jmp {
         _registers = registers;
     }
 
-    void doit() override {
+    void doit(size_t *i) override {
         _registers->F1X = _stack->top();
         _stack->pop();
         _registers->F2X = _stack->top();
         _stack->push(_registers->F1X);
         if (_registers->F1X != _registers->F2X) {
-            Jmp::doit();
+            Jmp::doit(i);
         }
     }
 };
