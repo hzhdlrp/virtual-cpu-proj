@@ -53,6 +53,12 @@ public:
         _commandsByNames["IN"] = [&]() {return std::make_unique<In>( &_stack);};
         _commandsByNames["JMP"] = [&]() {return std::make_unique<Jmp>(&_commandsVector, &_labelsIndexes);};
         _commandsByNames["JNE"] = [&]() {return std::make_unique<Jne>(&_commandsVector, &_labelsIndexes, &_stack, &_registers);};
+        _commandsByNames["JEQ"] = [&]() {return std::make_unique<Jeq>(&_commandsVector, &_labelsIndexes, &_stack, &_registers);};
+        _commandsByNames["JA"] = [&]() {return std::make_unique<Ja>(&_commandsVector, &_labelsIndexes, &_stack, &_registers);};
+        _commandsByNames["JAE"] = [&]() {return std::make_unique<Jae>(&_commandsVector, &_labelsIndexes, &_stack, &_registers);};
+        _commandsByNames["JB"] = [&]() {return std::make_unique<Jb>(&_commandsVector, &_labelsIndexes, &_stack, &_registers);};
+        _commandsByNames["JBE"] = [&]() {return std::make_unique<Jbe>(&_commandsVector, &_labelsIndexes, &_stack, &_registers);};
+
     }
 private:
     std::ifstream *_inputFile = nullptr;

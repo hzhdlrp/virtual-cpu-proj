@@ -1,0 +1,31 @@
+BEGIN
+	PUSH 1
+	PUSH 1
+
+	PUSH 2
+	PUSH 5
+
+label:
+
+	POPR AX
+	PUSH 1
+	ADD
+	POPR BX
+	POP
+
+	POPR CX
+	PUSHR CX
+	ADD
+	POPR DX
+	PUSHR CX
+	PUSHR DX
+	
+	PUSHR BX
+	PUSHR AX
+
+JNE label
+
+	POP
+	POP
+	OUT
+END

@@ -225,3 +225,102 @@ struct Jne : Jmp {
     }
 };
 
+struct Jeq : Jmp {
+    Stack<size_t> *_stack;
+    Registers *_registers;
+
+    Jeq(std::vector<std::unique_ptr<Commands>> *commandsVector, std::map<std::string , size_t> *labelsIndexes, Stack<size_t> *stack, Registers *registers) : Jmp(commandsVector, labelsIndexes) {
+        _stack = stack;
+        _registers = registers;
+    }
+
+    void doit(size_t *i) override {
+        _registers->F1X = _stack->top();
+        _stack->pop();
+        _registers->F2X = _stack->top();
+        _stack->push(_registers->F1X);
+        if (_registers->F1X == _registers->F2X) {
+            Jmp::doit(i);
+        }
+    }
+};
+
+struct Ja : Jmp {
+    Stack<size_t> *_stack;
+    Registers *_registers;
+
+    Ja(std::vector<std::unique_ptr<Commands>> *commandsVector, std::map<std::string , size_t> *labelsIndexes, Stack<size_t> *stack, Registers *registers) : Jmp(commandsVector, labelsIndexes) {
+        _stack = stack;
+        _registers = registers;
+    }
+
+    void doit(size_t *i) override {
+        _registers->F1X = _stack->top();
+        _stack->pop();
+        _registers->F2X = _stack->top();
+        _stack->push(_registers->F1X);
+        if (_registers->F1X > _registers->F2X) {
+            Jmp::doit(i);
+        }
+    }
+};
+
+struct Jae : Jmp {
+    Stack<size_t> *_stack;
+    Registers *_registers;
+
+    Jae(std::vector<std::unique_ptr<Commands>> *commandsVector, std::map<std::string , size_t> *labelsIndexes, Stack<size_t> *stack, Registers *registers) : Jmp(commandsVector, labelsIndexes) {
+        _stack = stack;
+        _registers = registers;
+    }
+
+    void doit(size_t *i) override {
+        _registers->F1X = _stack->top();
+        _stack->pop();
+        _registers->F2X = _stack->top();
+        _stack->push(_registers->F1X);
+        if (_registers->F1X >= _registers->F2X) {
+            Jmp::doit(i);
+        }
+    }
+};
+
+struct Jb : Jmp {
+    Stack<size_t> *_stack;
+    Registers *_registers;
+
+    Jb(std::vector<std::unique_ptr<Commands>> *commandsVector, std::map<std::string , size_t> *labelsIndexes, Stack<size_t> *stack, Registers *registers) : Jmp(commandsVector, labelsIndexes) {
+        _stack = stack;
+        _registers = registers;
+    }
+
+    void doit(size_t *i) override {
+        _registers->F1X = _stack->top();
+        _stack->pop();
+        _registers->F2X = _stack->top();
+        _stack->push(_registers->F1X);
+        if (_registers->F1X < _registers->F2X) {
+            Jmp::doit(i);
+        }
+    }
+};
+
+struct Jbe : Jmp {
+    Stack<size_t> *_stack;
+    Registers *_registers;
+
+    Jbe(std::vector<std::unique_ptr<Commands>> *commandsVector, std::map<std::string , size_t> *labelsIndexes, Stack<size_t> *stack, Registers *registers) : Jmp(commandsVector, labelsIndexes) {
+        _stack = stack;
+        _registers = registers;
+    }
+
+    void doit(size_t *i) override {
+        _registers->F1X = _stack->top();
+        _stack->pop();
+        _registers->F2X = _stack->top();
+        _stack->push(_registers->F1X);
+        if (_registers->F1X <= _registers->F2X) {
+            Jmp::doit(i);
+        }
+    }
+};
