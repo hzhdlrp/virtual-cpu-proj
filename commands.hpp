@@ -190,7 +190,6 @@ struct Jmp : Commands {
     std::string _label = std::string("");
     std::vector<std::unique_ptr<Commands>> *_commandsVector = nullptr;
     std::map<std::string , size_t> *_labelsIndexes = nullptr;
-    size_t _index = 0;
 
     void set(std::ifstream *input) override {
         *input >> _label;
@@ -199,11 +198,10 @@ struct Jmp : Commands {
     Jmp(std::vector<std::unique_ptr<Commands>> *commandsVector, std::map<std::string , size_t> *labelsIndexes) {
         _commandsVector = commandsVector;
         _labelsIndexes = labelsIndexes;
-        _index = (*_labelsIndexes)[_label];
     }
 
     void doit(size_t *i) override {
-        *i = _index;
+        *i = (*_labelsIndexes)[_label];
     }
 };
 

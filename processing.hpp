@@ -32,7 +32,7 @@ public:
 
     void execute() {
         for (size_t i = _labelsIndexes["BEGIN"]; i < _commandsVector.size(); ++i) {
-
+            _commandsVector[i]->doit(&i);
         }
     }
 
