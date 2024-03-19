@@ -32,7 +32,9 @@ struct Push : Commands {
     Stack<size_t> *_stack = nullptr;
 
     void set(std::ifstream *input) override {
-        *input >> _value;
+        if (!(*input >> _value).good()) {
+            throw std::invalid_argument("invalid push");
+        }
     }
 
     explicit Push(Stack<size_t> *stack) {
@@ -49,7 +51,9 @@ struct Pushr : Push {
     Registers *_registers = nullptr;
 
     void set(std::ifstream *input) override {
-        *input >> _reg;
+        if (!(*input >> _reg).good()) {
+            throw std::invalid_argument("invalid pushr");
+        }
     }
 
     Pushr(Stack<size_t> *stack, Registers *registers) : Push(stack) {
@@ -81,7 +85,9 @@ struct Popr : Pop {
     Registers *_registers = nullptr;
 
     void set(std::ifstream *input) override {
-        *input >> _reg;
+        if (!(*input >> _reg).good()) {
+            throw std::invalid_argument("invalid popr");
+        }
     }
 
     Popr(Stack<size_t> *stack, Registers *registers): Pop(stack) {
@@ -192,7 +198,9 @@ struct Jmp : Commands {
     std::map<std::string , size_t> *_labelsIndexes = nullptr;
 
     void set(std::ifstream *input) override {
-        *input >> _label;
+        if (!(*input >> _label).good()) {
+            throw std::invalid_argument("invalid label");
+        }
     }
 
     Jmp(std::vector<std::unique_ptr<Commands>> *commandsVector, std::map<std::string , size_t> *labelsIndexes) {
