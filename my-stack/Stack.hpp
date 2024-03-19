@@ -19,7 +19,8 @@ public:
     Stack& operator=(Stack &&) noexcept;
     ~Stack();
 
-    void push(T);
+    void push(const T&);
+    void push(T&&);
     void pop();
     T top();
 private:
@@ -106,13 +107,19 @@ Stack<T>::~Stack() {
     }
 }
 
-// T&&
-// const T&
 template<class T>
-void Stack<T>::push(T data) {
+void Stack<T>::push(const T& data) {
     auto *ptr = _top;
     _top = new StackNode<T>;
     _top->data = data;
+    _top->next = ptr;
+}
+
+template<class T>
+void Stack<T>::push(T&& data) {
+    auto *ptr = _top;
+    _top = new StackNode<T>;
+    _top->data = std::move(data);
     _top->next = ptr;
 }
 
