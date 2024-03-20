@@ -58,7 +58,8 @@ public:
         _commandsByNames["JAE"] = [&]() {return std::make_unique<Jae>(&_commandsVector, &_labelsIndexes, &_stack, &_registers);};
         _commandsByNames["JB"] = [&]() {return std::make_unique<Jb>(&_commandsVector, &_labelsIndexes, &_stack, &_registers);};
         _commandsByNames["JBE"] = [&]() {return std::make_unique<Jbe>(&_commandsVector, &_labelsIndexes, &_stack, &_registers);};
-
+        _commandsByNames["CALL"] = [&]() {return std::make_unique<Call>(&_commandsVector, &_labelsIndexes, &_callsIndexes);};
+        _commandsByNames["RET"] = [&]() {return std::make_unique<Ret>(&_commandsVector, &_labelsIndexes, &_callsIndexes);};
     }
 private:
     std::ifstream *_inputFile = nullptr;
@@ -67,4 +68,5 @@ private:
     std::vector<std::unique_ptr<Commands>> _commandsVector;
     std::map<std::string , size_t> _labelsIndexes;
     std::map<std::string, std::function<std::unique_ptr<Commands>()>> _commandsByNames;
+    std::vector<size_t> _callsIndexes;
 };

@@ -23,9 +23,16 @@ public:
     void push(T&&);
     void pop();
     T top();
+    size_t size();
 private:
+    size_t _size = 0;
     StackNode<T> *_top = nullptr;
 };
+
+template<class T>
+size_t Stack<T>::size() {
+    return _size;
+}
 
 template<class T>
 Stack<T>::Stack() = default;
@@ -113,6 +120,7 @@ void Stack<T>::push(const T& data) {
     _top = new StackNode<T>;
     _top->data = data;
     _top->next = ptr;
+    _size++;
 }
 
 template<class T>
@@ -121,6 +129,7 @@ void Stack<T>::push(T&& data) {
     _top = new StackNode<T>;
     _top->data = std::move(data);
     _top->next = ptr;
+    _size++;
 }
 
 template<class T>

@@ -332,3 +332,21 @@ struct Jbe : Jmp {
         }
     }
 };
+
+struct Call : Jmp {
+    Call(std::vector<std::unique_ptr<Commands>> *commandsVector, std::map<std::string , size_t> *labelsIndexes, std::vector<size_t> *callsIndexes) : Jmp(commandsVector,labelsIndexes) {
+        callsIndexes->push_back(commandsVector->size());
+    }
+};
+
+struct Ret : Jmp {
+    std::vector<size_t> *_callsIndexes = nullptr;
+
+    Ret(std::vector<std::unique_ptr<Commands>> *commandsVector, std::map<std::string , size_t> *labelsIndexes, std::vector<size_t> *callsIndexes) : Jmp(commandsVector, labelsIndexes) {
+        _callsIndexes = callsIndexes;
+    }
+
+    void doit(size_t *i) override {
+        *i = (*_callsIndexes)[_callsIndexes->size() - 1] + 1;
+    }
+};
