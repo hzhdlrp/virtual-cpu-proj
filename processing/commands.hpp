@@ -211,7 +211,7 @@ struct Jmp : Commands {
     }
 
     void doit(size_t *i) override {
-        *i = (*_labelsIndexes)[_label];
+        *i = (*_labelsIndexes)[_label] - 1;
     }
 };
 
@@ -363,7 +363,7 @@ struct Ret : Jmp {
     void set(std::ifstream *input) override {}
 
     void doit(size_t *i) override {
-        *i = (*_callsIndexes)[_callsIndexes->size() - 1] + 1;
+        *i = (*_callsIndexes)[_callsIndexes->size() - 1];
         _callsIndexes->pop_back();
     }
 };

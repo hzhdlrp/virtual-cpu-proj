@@ -30,9 +30,11 @@ public:
             } else {
                 cmd.pop_back();
                 _labelsIndexes[cmd] = _commandsVector.size();
+                --i;
             }
             ++i;
         }
+        _commandsVector.pop_back();
     }
 
     void execute() {
@@ -67,6 +69,7 @@ public:
         _commandsByNames["JBE"] = [&]() {return std::make_unique<Jbe>(&_commandsVector, &_labelsIndexes, &_stack, &_registers);};
         _commandsByNames["CALL"] = [&]() {return std::make_unique<Call>(&_commandsVector, &_labelsIndexes, &_callsIndexes);};
         _commandsByNames["RET"] = [&]() {return std::make_unique<Ret>(&_commandsVector, &_labelsIndexes, &_callsIndexes);};
+
     }
 private:
     std::ifstream *_inputFile = nullptr;

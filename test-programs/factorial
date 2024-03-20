@@ -16,7 +16,7 @@ return:
     RET
 
 BEGIN
-    PUSH 5
+    PUSH 6
     POPR AX
     PUSHR AX
     POPR BX
@@ -24,5 +24,3 @@ BEGIN
     PUSHR BX
     OUT
 END
-
-
