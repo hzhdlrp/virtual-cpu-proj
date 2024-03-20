@@ -17,10 +17,12 @@ struct Registers {
 struct Commands {
     virtual void set(std::ifstream *input) {}
     virtual void doit(size_t*) {}
+    virtual void setIndex(size_t) {}
 };
 
 struct Begin : Commands {
-    void doit(size_t*) override {}
+    void doit(size_t*) override {
+    }
 };
 
 struct End : Commands {
@@ -334,8 +336,20 @@ struct Jbe : Jmp {
 };
 
 struct Call : Jmp {
+    std::vector<size_t> *_callsIndexes;
+    size_t _callIndex = 0;
+
     Call(std::vector<std::unique_ptr<Commands>> *commandsVector, std::map<std::string , size_t> *labelsIndexes, std::vector<size_t> *callsIndexes) : Jmp(commandsVector,labelsIndexes) {
-        callsIndexes->push_back(commandsVector->size());
+        _callsIndexes = callsIndexes;
+    }
+
+    void doit(size_t *i) override {
+        _callsIndexes->push_back(_callIndex);
+        Jmp::doit(i);
+    }
+
+    void setIndex(size_t i) override {
+        _callIndex = i;
     }
 };
 
@@ -346,7 +360,10 @@ struct Ret : Jmp {
         _callsIndexes = callsIndexes;
     }
 
+    void set(std::ifstream *input) override {}
+
     void doit(size_t *i) override {
         *i = (*_callsIndexes)[_callsIndexes->size() - 1] + 1;
+        _callsIndexes->pop_back();
     }
 };

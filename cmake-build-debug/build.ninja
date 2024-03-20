@@ -47,12 +47,12 @@ cmake_ninja_workdir = /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake
 #############################################
 # Order-only phony target for project2
 
-build cmake_object_order_depends_target_project2: phony || my-stack/mylib
+build cmake_object_order_depends_target_project2: phony || CMakeFiles/project2.dir
 
 build CMakeFiles/project2.dir/main.cpp.o: CXX_COMPILER__project2_unscanned_Debug /Users/vadimleonov/CLionProjects/virtual_cpu_project/main.cpp || cmake_object_order_depends_target_project2
   DEP_FILE = CMakeFiles/project2.dir/main.cpp.o.d
   FLAGS = -g -std=gnu++20 -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk -fdiagnostics-color=always
-  INCLUDES = -I/Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack
+  INCLUDES = -I/Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack -I/Users/vadimleonov/CLionProjects/virtual_cpu_project/processing
   OBJECT_DIR = CMakeFiles/project2.dir
   OBJECT_FILE_DIR = CMakeFiles/project2.dir
 
@@ -64,7 +64,7 @@ build CMakeFiles/project2.dir/main.cpp.o: CXX_COMPILER__project2_unscanned_Debug
 #############################################
 # Link the executable project2
 
-build project2: CXX_EXECUTABLE_LINKER__project2_Debug CMakeFiles/project2.dir/main.cpp.o || my-stack/mylib
+build project2: CXX_EXECUTABLE_LINKER__project2_Debug CMakeFiles/project2.dir/main.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.2.sdk
   OBJECT_DIR = CMakeFiles/project2.dir
   POST_BUILD = :
@@ -589,6 +589,82 @@ build my-stack/googletest/googletest/CMakeFiles/install/strip.util: CUSTOM_COMMA
 build my-stack/googletest/googletest/install/strip: phony my-stack/googletest/googletest/CMakeFiles/install/strip.util
 
 # =============================================================================
+# Write statements declared in CMakeLists.txt:
+# /Users/vadimleonov/CLionProjects/virtual_cpu_project/CMakeLists.txt
+# =============================================================================
+
+
+#############################################
+# Utility command for processing
+
+build processing/processing: phony
+
+
+#############################################
+# Utility command for edit_cache
+
+build processing/CMakeFiles/edit_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/processing && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  DESC = No interactive CMake dialog available...
+  restat = 1
+
+build processing/edit_cache: phony processing/CMakeFiles/edit_cache.util
+
+
+#############################################
+# Utility command for rebuild_cache
+
+build processing/CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
+  COMMAND = cd /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/processing && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/vadimleonov/CLionProjects/virtual_cpu_project -B/Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug
+  DESC = Running CMake to regenerate build system...
+  pool = console
+  restat = 1
+
+build processing/rebuild_cache: phony processing/CMakeFiles/rebuild_cache.util
+
+
+#############################################
+# Utility command for list_install_components
+
+build processing/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build processing/CMakeFiles/install.util: CUSTOM_COMMAND processing/all
+  COMMAND = cd /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/processing && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -P cmake_install.cmake
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build processing/install: phony processing/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build processing/CMakeFiles/install/local.util: CUSTOM_COMMAND processing/all
+  COMMAND = cd /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/processing && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build processing/install/local: phony processing/CMakeFiles/install/local.util
+
+
+#############################################
+# Utility command for install/strip
+
+build processing/CMakeFiles/install/strip.util: CUSTOM_COMMAND processing/all
+  COMMAND = cd /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/processing && /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build processing/install/strip: phony processing/CMakeFiles/install/strip.util
+
+# =============================================================================
 # Target aliases.
 
 build gmock: phony lib/libgmock.a
@@ -609,6 +685,8 @@ build libgtest_main.a: phony lib/libgtest_main.a
 
 build mylib: phony my-stack/mylib
 
+build processing: phony processing/processing
+
 build tests: phony my-stack/tests
 
 # =============================================================================
@@ -619,7 +697,7 @@ build tests: phony my-stack/tests
 #############################################
 # Folder: /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug
 
-build all: phony project2 my-stack/all
+build all: phony project2 my-stack/all processing/all
 
 # =============================================================================
 
@@ -650,20 +728,27 @@ build my-stack/googletest/googlemock/all: phony lib/libgmock.a lib/libgmock_main
 build my-stack/googletest/googletest/all: phony lib/libgtest.a lib/libgtest_main.a
 
 # =============================================================================
+
+#############################################
+# Folder: /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/processing
+
+build processing/all: phony processing/processing
+
+# =============================================================================
 # Built-in targets
 
 
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeDependentOption.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakePackageConfigHelpers.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CheckCSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CheckIncludeFile.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CheckLibraryExists.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/GNU-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/GNU-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/FindPackageHandleStandardArgs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/FindPackageMessage.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/FindThreads.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/GNUInstallDirs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Internal/CheckSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-GNU-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-GNU-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/UnixPaths.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/WriteBasicConfigVersionFile.cmake /Users/vadimleonov/CLionProjects/virtual_cpu_project/CMakeLists.txt /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/CMakeLists.txt /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/CMakeLists.txt /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googlemock/CMakeLists.txt /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googlemock/cmake/gmock.pc.in /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googlemock/cmake/gmock_main.pc.in /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/CMakeLists.txt /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/cmake/Config.cmake.in /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/cmake/gtest.pc.in /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/cmake/gtest_main.pc.in /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/cmake/internal_utils.cmake CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeDependentOption.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakePackageConfigHelpers.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CheckCSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CheckIncludeFile.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CheckLibraryExists.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/GNU-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/GNU-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/FindPackageHandleStandardArgs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/FindPackageMessage.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/FindThreads.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/GNUInstallDirs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Internal/CheckSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-GNU-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-GNU-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/UnixPaths.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/WriteBasicConfigVersionFile.cmake /Users/vadimleonov/CLionProjects/virtual_cpu_project/CMakeLists.txt /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/CMakeLists.txt /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/CMakeLists.txt /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googlemock/CMakeLists.txt /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googlemock/cmake/gmock.pc.in /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googlemock/cmake/gmock_main.pc.in /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/CMakeLists.txt /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/cmake/Config.cmake.in /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/cmake/gtest.pc.in /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/cmake/gtest_main.pc.in /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/cmake/internal_utils.cmake /Users/vadimleonov/CLionProjects/virtual_cpu_project/processing/CMakeLists.txt CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeDependentOption.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakePackageConfigHelpers.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CheckCSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CheckIncludeFile.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CheckLibraryExists.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/GNU-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/GNU-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/FindPackageHandleStandardArgs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/FindPackageMessage.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/FindThreads.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/GNUInstallDirs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Internal/CheckSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-GNU-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-GNU-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/UnixPaths.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/WriteBasicConfigVersionFile.cmake /Users/vadimleonov/CLionProjects/virtual_cpu_project/CMakeLists.txt /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/CMakeLists.txt /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/CMakeLists.txt /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googlemock/CMakeLists.txt /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googlemock/cmake/gmock.pc.in /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googlemock/cmake/gmock_main.pc.in /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/CMakeLists.txt /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/cmake/Config.cmake.in /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/cmake/gtest.pc.in /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/cmake/gtest_main.pc.in /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/cmake/internal_utils.cmake CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake: phony
+build /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/BasicConfigVersion-AnyNewerVersion.cmake.in /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCXXInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeCommonLanguageInclude.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeDependentOption.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeGenericSystem.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeInitializeConfigs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeLanguageInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakePackageConfigHelpers.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeSystemSpecificInformation.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CMakeSystemSpecificInitialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CheckCSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CheckIncludeFile.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/CheckLibraryExists.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacros.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/GNU-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/GNU-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Compiler/GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/FindPackageHandleStandardArgs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/FindPackageMessage.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/FindThreads.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/GNUInstallDirs.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Internal/CheckSourceCompiles.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-GNU-C.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-GNU-CXX.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Apple-GNU.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Darwin-Initialize.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/Darwin.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/Platform/UnixPaths.cmake /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/WriteBasicConfigVersionFile.cmake /Users/vadimleonov/CLionProjects/virtual_cpu_project/CMakeLists.txt /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/CMakeLists.txt /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/CMakeLists.txt /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googlemock/CMakeLists.txt /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googlemock/cmake/gmock.pc.in /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googlemock/cmake/gmock_main.pc.in /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/CMakeLists.txt /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/cmake/Config.cmake.in /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/cmake/gtest.pc.in /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/cmake/gtest_main.pc.in /Users/vadimleonov/CLionProjects/virtual_cpu_project/my-stack/googletest/googletest/cmake/internal_utils.cmake /Users/vadimleonov/CLionProjects/virtual_cpu_project/processing/CMakeLists.txt CMakeCache.txt CMakeFiles/3.26.4/CMakeCCompiler.cmake CMakeFiles/3.26.4/CMakeCXXCompiler.cmake CMakeFiles/3.26.4/CMakeSystem.cmake: phony
 
 
 #############################################

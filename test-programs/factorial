@@ -1,0 +1,28 @@
+recursion:
+    PUSH 1
+    PUSHR AX
+    SUB
+    POPR AX
+    PUSHR AX
+    PUSHR BX
+    MUL
+    POPR BX
+    PUSHR AX
+    PUSH 1
+    JEQ return
+    CALL recursion
+
+return:
+    RET
+
+BEGIN
+    PUSH 5
+    POPR AX
+    PUSHR AX
+    POPR BX
+    CALL recursion
+    PUSHR BX
+    OUT
+END
+
+

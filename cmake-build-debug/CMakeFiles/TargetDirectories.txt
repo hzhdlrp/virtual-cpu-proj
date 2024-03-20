@@ -35,3 +35,10 @@
 /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/my-stack/googletest/googletest/CMakeFiles/install.dir
 /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/my-stack/googletest/googletest/CMakeFiles/install/local.dir
 /Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/my-stack/googletest/googletest/CMakeFiles/install/strip.dir
+/Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/processing/CMakeFiles/processing.dir
+/Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/processing/CMakeFiles/edit_cache.dir
+/Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/processing/CMakeFiles/rebuild_cache.dir
+/Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/processing/CMakeFiles/list_install_components.dir
+/Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/processing/CMakeFiles/install.dir
+/Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/processing/CMakeFiles/install/local.dir
+/Users/vadimleonov/CLionProjects/virtual_cpu_project/cmake-build-debug/processing/CMakeFiles/install/strip.dir

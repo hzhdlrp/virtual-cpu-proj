@@ -3,7 +3,7 @@
 
 #endif //PROJECT2_COMPILATION_H
 
-#include "my-stack/Stack.hpp"
+#include "Stack.hpp"
 #include <fstream>
 #include <memory>
 #include <vector>
@@ -15,6 +15,7 @@ class Virtual {
 public:
     void read() {
         std::string cmd = std::string("");
+        int i = 0;
         while (!_inputFile->eof()) {
             *_inputFile >> cmd;
             if (_commandsByNames.contains(cmd)) {
@@ -22,17 +23,23 @@ public:
                 if (cmd == "BEGIN") {
                     _labelsIndexes[cmd] = _commandsVector.size() - 1;
                 }
+                if (cmd == "CALL") {
+                    _commandsVector[_commandsVector.size() - 1]->setIndex(i);
+                }
                 _commandsVector[_commandsVector.size() - 1]->set(_inputFile);
             } else {
                 cmd.pop_back();
-                _labelsIndexes[cmd] = _commandsVector.size() - 1;
+                _labelsIndexes[cmd] = _commandsVector.size();
             }
+            ++i;
         }
     }
 
     void execute() {
-        for (size_t i = _labelsIndexes["BEGIN"]; i < _commandsVector.size(); ++i) {
+        size_t i = _labelsIndexes["BEGIN"];
+        while (i < _commandsVector.size()) {
             _commandsVector[i]->doit(&i);
+            ++i;
         }
     }
 
