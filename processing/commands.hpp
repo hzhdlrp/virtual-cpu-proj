@@ -64,9 +64,10 @@ struct Pushr : Push {
 
     void doit(size_t*) override {
         if (_reg == "AX") _stack->push(_registers->AX);
-        if (_reg == "BX") _stack->push(_registers->BX);
-        if (_reg == "CX") _stack->push(_registers->CX);
-        if (_reg == "DX") _stack->push(_registers->DX);
+        else if (_reg == "BX") _stack->push(_registers->BX);
+        else if (_reg == "CX") _stack->push(_registers->CX);
+        else if (_reg == "DX") _stack->push(_registers->DX);
+        else throw std::runtime_error("wrong register");
     }
 };
 
@@ -99,9 +100,10 @@ struct Popr : Pop {
 
     void doit(size_t*) override {
         if (_reg == "AX") _registers->AX = _stack->top();
-        if (_reg == "BX") _registers->BX = _stack->top();
-        if (_reg == "CX") _registers->CX = _stack->top();
-        if (_reg == "DX") _registers->DX = _stack->top();
+        else if (_reg == "BX") _registers->BX = _stack->top();
+        else if (_reg == "CX") _registers->CX = _stack->top();
+        else if (_reg == "DX") _registers->DX = _stack->top();
+        else throw std::runtime_error("wrong register");
         _stack->pop();
     }
 };
